@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -23,10 +24,63 @@ export default function ChatWidget({
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [sessionId] = useState(() => `session_${Date.now()}_${Math.random()}`);
+  const [sessionId] = useState(() => {
+    // Try to get existing session ID from localStorage
+    if (typeof window !== 'undefined') {
+      const existingSessionId = localStorage.getItem('chatbot_session_id');
+      if (existingSessionId) {
+        return existingSessionId;
+      }
+    }
+    const newSessionId = `session_${Date.now()}_${Math.random()}`;
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('chatbot_session_id', newSessionId);
+    }
+    return newSessionId;
+  });
   const [showLeadForm, setShowLeadForm] = useState(true);
   const [leadData, setLeadData] = useState({ name: '', email: '' });
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Load saved user data and messages on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedUserData = localStorage.getItem('chatbot_user_data');
+      const savedMessages = localStorage.getItem(`chatbot_messages_${sessionId}`);
+      
+      if (savedUserData) {
+        const userData = JSON.parse(savedUserData);
+        setLeadData(userData);
+        setShowLeadForm(false);
+        
+        if (savedMessages) {
+          const parsedMessages = JSON.parse(savedMessages);
+          // Convert timestamp strings back to Date objects
+          const messagesWithDates = parsedMessages.map((msg: any) => ({
+            ...msg,
+            timestamp: new Date(msg.timestamp)
+          }));
+          setMessages(messagesWithDates);
+        } else {
+          // Show welcome message for returning users
+          setMessages([
+            {
+              role: 'assistant',
+              content: `Welcome back, ${userData.name}! How can I help you today?`,
+              timestamp: new Date(),
+            },
+          ]);
+        }
+      }
+    }
+  }, [sessionId]);
+
+  // Save messages to localStorage whenever they change
+  useEffect(() => {
+    if (typeof window !== 'undefined' && messages.length > 0 && !showLeadForm) {
+      localStorage.setItem(`chatbot_messages_${sessionId}`, JSON.stringify(messages));
+    }
+  }, [messages, sessionId, showLeadForm]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -39,6 +93,11 @@ export default function ChatWidget({
   const handleLeadSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (leadData.name && leadData.email) {
+      // Save user data to localStorage
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('chatbot_user_data', JSON.stringify(leadData));
+      }
+      
       setShowLeadForm(false);
       setMessages([
         {
@@ -155,7 +214,7 @@ export default function ChatWidget({
             </button>
           </div>
 
-          {/* Lead Form */}
+            {/* Lead Form */}
           {showLeadForm && (
             <div className="flex-1 p-6 flex items-center justify-center">
               <form onSubmit={handleLeadSubmit} className="w-full space-y-4">
@@ -252,6 +311,45 @@ export default function ChatWidget({
                     </svg>
                   </button>
                 </div>
+                {/* Clear conversation button */}
+                <button
+                  type="button"
+                  onClick={async () => {
+                    const result = await Swal.fire({
+                      title: 'Clear Conversation?',
+                      text: 'This will delete all your chat history.',
+                      icon: 'warning',
+                      showCancelButton: true,
+                      confirmButtonColor: '#ef4444',
+                      cancelButtonColor: '#6b7280',
+                      confirmButtonText: 'Yes, clear it!',
+                      cancelButtonText: 'Cancel'
+                    });
+                    
+                    if (result.isConfirmed) {
+                      setMessages([
+                        {
+                          role: 'assistant',
+                          content: `Hi ${leadData.name}! How can I help you today?`,
+                          timestamp: new Date(),
+                        },
+                      ]);
+                      if (typeof window !== 'undefined') {
+                        localStorage.removeItem(`chatbot_messages_${sessionId}`);
+                      }
+                      Swal.fire({
+                        title: 'Cleared!',
+                        text: 'Your conversation history has been cleared.',
+                        icon: 'success',
+                        timer: 2000,
+                        showConfirmButton: false
+                      });
+                    }
+                  }}
+                  className="mt-2 text-xs text-gray-500 hover:text-red-600 transition"
+                >
+                  Clear conversation history
+                </button>
               </form>
             </>
           )}

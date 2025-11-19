@@ -1,7 +1,8 @@
-import OpenAI from 'openai';
+import Groq from 'groq-sdk';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || 'dummy-key',
+// Initialize Groq (FREE - Get API key at: https://console.groq.com)
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY || 'dummy-key',
 });
 
 // Demo mode fallback responses
@@ -42,53 +43,68 @@ export async function generateChatResponse(
   conversationHistory: Array<{ role: 'user' | 'assistant'; content: string }>,
   websiteContext?: string
 ): Promise<string> {
-  // Check if OpenAI API key is configured
-  const hasValidApiKey = process.env.OPENAI_API_KEY && 
-                         process.env.OPENAI_API_KEY !== 'dummy-key' && 
-                         process.env.OPENAI_API_KEY !== 'your-openai-api-key-here';
+  // Check if Groq API key is configured
+  const hasValidApiKey = process.env.GROQ_API_KEY && 
+                         process.env.GROQ_API_KEY !== 'dummy-key' && 
+                         process.env.GROQ_API_KEY !== 'your-groq-api-key-here';
 
   if (!hasValidApiKey) {
-    console.log('Using demo mode - no valid OpenAI API key configured');
+    console.log('Using demo mode - no valid Groq API key configured');
     return generateDemoResponse(userMessage, websiteContext);
   }
 
   try {
+    // Build conversation messages with specific business context
     const systemPrompt = websiteContext
-      ? `You are a helpful AI assistant for a website. Use the following website information to answer questions accurately:
+      ? `You are a customer support AI assistant for this specific business website. Use ONLY the following website information to answer questions:
 
 ${websiteContext}
 
-If the question is not related to the website content, politely let the user know and offer general assistance.`
-      : 'You are a helpful AI assistant. Answer questions in a friendly and professional manner.';
+IMPORTANT RULES:
+- Answer questions based ONLY on the website information provided above
+- Be specific about THIS business's services, pricing, and contact details
+- If asked about services, describe the services from the website content
+- Keep responses concise (2-3 sentences max)
+- If the question is not about this business, politely redirect to the website content
+- Never provide generic AI assistant information about yourself`
+      : `You are a customer support AI for an AI Chatbot Widget service for websites. 
 
-    const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
-      { role: 'system', content: systemPrompt },
-      ...conversationHistory.slice(-10).map((msg) => ({
-        role: msg.role as 'user' | 'assistant',
-        content: msg.content,
-      })),
-      { role: 'user', content: userMessage },
+OUR BUSINESS:
+- We provide AI Chatbot Widgets that businesses can embed on their websites
+- Our chatbots help capture leads, answer customer questions, and provide 24/7 support
+- Pricing starts at $99/month for small businesses
+- We offer website scraping to train chatbots on your content
+- Contact: info@aichat.fi
+
+Keep responses short (2-3 sentences) and focused on OUR chatbot service. Never give generic AI information.`;
+
+    const messages: Array<{ role: 'system' | 'user' | 'assistant', content: string }> = [
+      { role: 'system', content: systemPrompt }
     ];
+    
+    conversationHistory.slice(-10).forEach((msg) => {
+      messages.push({
+        role: msg.role,
+        content: msg.content
+      });
+    });
+    
+    messages.push({ role: 'user', content: userMessage });
 
-    const response = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
-      messages,
-      temperature: 0.7,
-      max_tokens: 500,
+    // Use Groq with Llama 3.1 (FREE, ultra-fast, high quality)
+    const completion = await groq.chat.completions.create({
+      messages: messages,
+      model: 'llama-3.1-8b-instant',
+      temperature: 0.5,
+      max_tokens: 150,
     });
 
-    return response.choices[0]?.message?.content || 'I apologize, but I could not generate a response.';
+    const text = completion.choices[0]?.message?.content?.trim() || '';
+    
+    return text || generateDemoResponse(userMessage, websiteContext);
   } catch (error: any) {
-    console.error('OpenAI API Error:', error);
-    
-    // Check if it's a quota/rate limit error
-    if (error?.status === 429 || error?.code === 'insufficient_quota') {
-      console.log('OpenAI quota exceeded - falling back to demo mode');
-      return generateDemoResponse(userMessage, websiteContext);
-    }
-    
-    // For other errors, still use fallback
-    console.log('OpenAI error - using demo mode fallback');
+    console.error('Groq API Error:', error?.message || error);
+    console.log('Using demo mode fallback');
     return generateDemoResponse(userMessage, websiteContext);
   }
 }
