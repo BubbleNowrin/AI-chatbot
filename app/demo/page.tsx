@@ -2,17 +2,17 @@ import ChatWidget from '@/components/ChatWidget';
 
 export default function DemoPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-beige to-blue-50">
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold text-center mb-4">
             AI Chatbot Demo
           </h1>
-          <p className="text-xl text-gray-600 text-center mb-12">
+          <p className="text-xl text-gray-500 text-center mb-12">
             Try out the chat widget in action!
           </p>
 
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
+          <div className="bg-beige-light rounded-xl shadow-lg p-8 mb-8">
             <h2 className="text-2xl font-bold mb-4">Sample Website Content</h2>
             <div className="prose max-w-none">
               <h3>Welcome to TechCorp</h3>

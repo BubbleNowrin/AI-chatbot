@@ -28,24 +28,24 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#D6E681]/20 via-[#BABF95]/20 to-[#C4AD83]/20 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#6F7D8C]/20 via-[#32021F]/20 to-[#4B2E39]/20 flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md"
+        className="bg-beige-light rounded-2xl shadow-2xl p-8 w-full max-w-md"
       >
         {/* Logo/Header */}
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-br from-[#C6B677] to-[#DBB957] rounded-2xl mx-auto mb-4 flex items-center justify-center">
+          <div className="w-16 h-16 bg-gradient-to-br from-[#6C596E] to-[#77A0A9] rounded-2xl mx-auto mb-4 flex items-center justify-center">
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
           </div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-[#C6B677] to-[#DBB957] bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-[#6C596E] to-[#77A0A9] bg-clip-text text-transparent">
             Dashboard Login
           </h1>
-          <p className="text-gray-600 mt-2">Access your analytics and conversations</p>
+          <p className="text-gray-500 mt-2">Access your analytics and conversations</p>
         </div>
 
         {/* Demo Credentials Card */}
@@ -53,20 +53,20 @@ export default function LoginPage() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
-          className="mb-6 p-4 bg-gradient-to-r from-[#D6E681]/30 to-[#BABF95]/30 border border-[#BABF95] rounded-xl"
+          className="mb-6 p-4 bg-gradient-to-r from-[#6F7D8C]/30 to-[#32021F]/30 border border-[#32021F] rounded-xl"
         >
           <div className="flex items-start">
-            <svg className="w-5 h-5 text-[#C6B677] mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="w-5 h-5 text-[#6C596E] mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
             </svg>
             <div className="flex-1">
-              <p className="text-sm font-semibold text-[#C4AD83] mb-2">Demo Credentials:</p>
+              <p className="text-sm font-semibold text-[#4B2E39] mb-2">Demo Credentials:</p>
               <div className="space-y-1 text-sm">
-                <p className="text-[#C4AD83]">
-                  <span className="font-medium">Username:</span> <code className="bg-white px-2 py-0.5 rounded">admin</code>
+                <p className="text-[#4B2E39]">
+                  <span className="font-medium">Username:</span> <code className="bg-beige-light px-2 py-0.5 rounded">admin</code>
                 </p>
-                <p className="text-[#C4AD83]">
-                  <span className="font-medium">Password:</span> <code className="bg-white px-2 py-0.5 rounded">demo123</code>
+                <p className="text-[#4B2E39]">
+                  <span className="font-medium">Password:</span> <code className="bg-beige-light px-2 py-0.5 rounded">demo123</code>
                 </p>
               </div>
             </div>
@@ -76,28 +76,28 @@ export default function LoginPage() {
         {/* Login Form */}
         <form onSubmit={handleLogin} className="space-y-5">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-600 mb-2">
               Username
             </label>
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#C6B677] focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#6C596E] focus:border-transparent transition-all"
               placeholder="Enter username"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-600 mb-2">
               Password
             </label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#C6B677] focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#6C596E] focus:border-transparent transition-all"
               placeholder="Enter password"
               required
             />
@@ -119,7 +119,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-3 bg-gradient-to-r from-[#C6B677] to-[#DBB957] text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3 bg-gradient-to-r from-[#6C596E] to-[#77A0A9] text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? (
               <span className="flex items-center justify-center">
@@ -139,7 +139,7 @@ export default function LoginPage() {
         <div className="mt-6 text-center">
           <a
             href="/"
-            className="text-sm text-gray-600 hover:text-[#C6B677] transition-colors flex items-center justify-center"
+            className="text-sm text-gray-500 hover:text-[#6C596E] transition-colors flex items-center justify-center"
           >
             <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />

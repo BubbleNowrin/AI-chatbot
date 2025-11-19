@@ -17,7 +17,7 @@ interface ChatWidgetProps {
 
 export default function ChatWidget({ 
   websiteUrl = '', 
-  primaryColor = '#C6B677',
+  primaryColor = '#6C596E',
   position = 'bottom-right' 
 }: ChatWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);
