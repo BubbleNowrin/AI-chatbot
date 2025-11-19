@@ -343,7 +343,7 @@ export default function PortfolioPage() {
             <div className="flex gap-4 justify-center flex-wrap">
               <Link
                 href="/playground"
-                className="px-8 py-4 bg-beige-light text-[#6C596E] rounded-lg font-semibold hover:shadow-xl transform hover:-translate-y-1 transition"
+                className="px-8 py-4 bg-gradient-to-r from-brand-teal to-brand-purple text-white rounded-lg font-semibold hover:shadow-xl transform hover:-translate-y-1 transition"
               >
                 Explore Playground
               </Link>
