@@ -17,10 +17,27 @@ import {
 
 const chatbotTypes = [
   {
+    id: 'widget',
+    title: 'Widget Chatbot',
+    icon: MessageSquare,
+    color: 'from-gray-500 to-gray-700',
+    description: 'Floating chat widget for your website - easy to embed',
+    features: [
+      'One-line embed code',
+      'Customizable appearance',
+      'Lead capture form',
+      'Dashboard analytics',
+      'Works on any website'
+    ],
+    pricing: '$49/month',
+    bestFor: 'Any website, blogs, portfolios, small business sites',
+    demoType: 'widget'
+  },
+  {
     id: 'basic',
     title: 'Basic Chatbot',
     icon: MessageSquare,
-    color: 'from-blue-500 to-cyan-500',
+    color: 'from-[#BABF95] to-[#C4AD83]',
     description: 'Simple Q&A chatbot for straightforward customer interactions',
     features: [
       'Instant responses to common questions',
@@ -37,7 +54,7 @@ const chatbotTypes = [
     id: 'memory',
     title: 'Memory-Based Chatbot',
     icon: Brain,
-    color: 'from-purple-500 to-pink-500',
+    color: 'from-[#C4AD83] to-[#C6B677]',
     description: 'Remembers past conversations for personalized experiences',
     features: [
       'Conversation history tracking',
@@ -54,7 +71,7 @@ const chatbotTypes = [
     id: 'knowledge',
     title: 'Knowledge Base Chatbot',
     icon: BookOpen,
-    color: 'from-green-500 to-emerald-500',
+    color: 'from-[#C4AD83] to-[#DBB957]',
     description: 'AI trained on your documentation, products, and content',
     features: [
       'Custom training on your data',
@@ -71,7 +88,7 @@ const chatbotTypes = [
     id: 'agent',
     title: 'Agent Mode Chatbot',
     icon: Network,
-    color: 'from-orange-500 to-red-500',
+    color: 'from-[#BABF95] to-[#C6B677]',
     description: 'Intelligent routing to different departments and live agents',
     features: [
       'Smart intent detection',
@@ -111,7 +128,7 @@ export default function PortfolioPage() {
   const [selectedDemo, setSelectedDemo] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-[#D6E681]/20">
       {/* Header */}
       <motion.header 
         initial={{ y: -50, opacity: 0 }}
@@ -120,14 +137,14 @@ export default function PortfolioPage() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center">
-            <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-[#C6B677] to-[#DBB957] bg-clip-text text-transparent">
               AI Chatbot Widget
             </Link>
             <nav className="flex gap-6">
-              <Link href="/" className="text-gray-600 hover:text-blue-600 transition">Home</Link>
-              <Link href="/portfolio" className="text-blue-600 font-semibold">Portfolio</Link>
-              <Link href="/playground" className="text-gray-600 hover:text-blue-600 transition">Playground</Link>
-              <Link href="/dashboard/login" className="text-gray-600 hover:text-blue-600 transition">Dashboard</Link>
+              <Link href="/" className="text-gray-600 hover:text-[#C6B677] transition">Home</Link>
+              <Link href="/portfolio" className="text-[#C6B677] font-semibold">Portfolio</Link>
+              <Link href="/playground" className="text-gray-600 hover:text-[#C6B677] transition">Playground</Link>
+              <Link href="/dashboard/login" className="text-gray-600 hover:text-[#C6B677] transition">Dashboard</Link>
             </nav>
           </div>
         </div>
@@ -151,7 +168,7 @@ export default function PortfolioPage() {
             transition={{ delay: 0.2 }}
             className="text-5xl md:text-6xl font-bold mb-6"
           >
-            Our <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Chatbot Portfolio</span>
+            Our <span className="bg-gradient-to-r from-[#C6B677] to-[#DBB957] bg-clip-text text-transparent">Chatbot Portfolio</span>
           </motion.h1>
           
           <motion.p 
@@ -160,7 +177,7 @@ export default function PortfolioPage() {
             transition={{ delay: 0.3 }}
             className="text-xl text-gray-600 max-w-3xl mx-auto mb-8"
           >
-            Choose the perfect chatbot for your business. From simple Q&A to advanced AI agents with intelligent routing.
+            Choose from 5 different chatbot types for your business. From website widgets to advanced AI agents with intelligent routing.
           </motion.p>
 
           <motion.div
@@ -171,14 +188,14 @@ export default function PortfolioPage() {
           >
             <Link 
               href="/playground"
-              className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition flex items-center gap-2"
+              className="px-8 py-3 bg-gradient-to-r from-[#C6B677] to-[#DBB957] text-white rounded-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition flex items-center gap-2"
             >
               <Zap className="w-5 h-5" />
               Try Playground
             </Link>
             <Link 
               href="/dashboard/login"
-              className="px-8 py-3 bg-white text-gray-800 rounded-lg font-semibold border-2 border-gray-200 hover:border-blue-600 hover:shadow-lg transform hover:-translate-y-1 transition"
+              className="px-8 py-3 bg-white text-gray-800 rounded-lg font-semibold border-2 border-gray-200 hover:border-[#C6B677] hover:shadow-lg transform hover:-translate-y-1 transition"
             >
               View Analytics
             </Link>
@@ -215,13 +232,13 @@ export default function PortfolioPage() {
                   <div className="p-6">
                     <div className="mb-6">
                       <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                        <Database className="w-5 h-5 text-blue-600" />
+                        <Database className="w-5 h-5 text-[#C6B677]" />
                         Key Features
                       </h4>
                       <ul className="space-y-2">
                         {bot.features.map((feature, idx) => (
                           <li key={idx} className="flex items-start gap-2 text-gray-600">
-                            <span className="text-green-500 mt-1">✓</span>
+                            <span className="text-[#C6B677] mt-1">✓</span>
                             <span>{feature}</span>
                           </li>
                         ))}
@@ -274,8 +291,9 @@ export default function PortfolioPage() {
           >
             <table className="w-full border-collapse bg-white rounded-xl shadow-lg overflow-hidden">
               <thead>
-                <tr className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+                <tr className="bg-gradient-to-r from-[#C6B677] to-[#DBB957] text-white">
                   <th className="p-4 text-left">Feature</th>
+                  <th className="p-4 text-center">Widget</th>
                   <th className="p-4 text-center">Basic</th>
                   <th className="p-4 text-center">Memory</th>
                   <th className="p-4 text-center">Knowledge</th>
@@ -284,16 +302,18 @@ export default function PortfolioPage() {
               </thead>
               <tbody>
                 {[
-                  { feature: 'Response Time', basic: '<1s', memory: '<2s', knowledge: '<3s', agent: '<2s' },
-                  { feature: 'Conversation Memory', basic: '❌', memory: '✅', knowledge: '✅', agent: '✅' },
-                  { feature: 'Custom Training', basic: '❌', memory: '❌', knowledge: '✅', agent: '✅' },
-                  { feature: 'Department Routing', basic: '❌', memory: '❌', knowledge: '❌', agent: '✅' },
-                  { feature: 'Lead Capture', basic: '✅', memory: '✅', knowledge: '✅', agent: '✅' },
-                  { feature: 'Analytics', basic: 'Basic', memory: 'Advanced', knowledge: 'Advanced', agent: 'Enterprise' },
-                  { feature: 'Setup Time', basic: '24hrs', memory: '48hrs', knowledge: '1 week', agent: '2 weeks' },
+                  { feature: 'Response Time', widget: '<1s', basic: '<1s', memory: '<2s', knowledge: '<3s', agent: '<2s' },
+                  { feature: 'Website Widget', widget: '✅', basic: '✅', memory: '✅', knowledge: '✅', agent: '✅' },
+                  { feature: 'Conversation Memory', widget: '❌', basic: '❌', memory: '✅', knowledge: '✅', agent: '✅' },
+                  { feature: 'Custom Training', widget: '❌', basic: '❌', memory: '❌', knowledge: '✅', agent: '✅' },
+                  { feature: 'Department Routing', widget: '❌', basic: '❌', memory: '❌', knowledge: '❌', agent: '✅' },
+                  { feature: 'Lead Capture', widget: '✅', basic: '✅', memory: '✅', knowledge: '✅', agent: '✅' },
+                  { feature: 'Analytics', widget: 'Basic', basic: 'Basic', memory: 'Advanced', knowledge: 'Advanced', agent: 'Enterprise' },
+                  { feature: 'Setup Time', widget: '1hr', basic: '24hrs', memory: '48hrs', knowledge: '1 week', agent: '2 weeks' },
                 ].map((row, idx) => (
                   <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
                     <td className="p-4 font-semibold text-gray-900">{row.feature}</td>
+                    <td className="p-4 text-center text-gray-600">{row.widget}</td>
                     <td className="p-4 text-center text-gray-600">{row.basic}</td>
                     <td className="p-4 text-center text-gray-600">{row.memory}</td>
                     <td className="p-4 text-center text-gray-600">{row.knowledge}</td>
@@ -313,7 +333,7 @@ export default function PortfolioPage() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-12 text-center text-white shadow-2xl"
+            className="bg-gradient-to-r from-[#C6B677] to-[#DBB957] rounded-2xl p-12 text-center text-white shadow-2xl"
           >
             <Users className="w-16 h-16 mx-auto mb-4" />
             <h2 className="text-4xl font-bold mb-4">Ready to Get Started?</h2>
@@ -323,13 +343,13 @@ export default function PortfolioPage() {
             <div className="flex gap-4 justify-center flex-wrap">
               <Link
                 href="/playground"
-                className="px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold hover:shadow-xl transform hover:-translate-y-1 transition"
+                className="px-8 py-4 bg-white text-[#C6B677] rounded-lg font-semibold hover:shadow-xl transform hover:-translate-y-1 transition"
               >
                 Explore Playground
               </Link>
               <a
                 href="mailto:info@aichat.fi"
-                className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-blue-600 transform hover:-translate-y-1 transition"
+                className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-[#C6B677] transform hover:-translate-y-1 transition"
               >
                 Contact Us
               </a>
@@ -357,12 +377,12 @@ export default function PortfolioPage() {
             </h3>
             <p className="text-gray-600 mb-6">
               This demo will be integrated with specialized features for {selectedDemo} mode.
-              For now, visit the <Link href="/playground" className="text-blue-600 underline">Playground</Link> to test all features!
+              For now, visit the <Link href="/playground" className="text-[#C6B677] underline">Playground</Link> to test all features!
             </p>
             <div className="flex gap-4">
               <Link
                 href="/playground"
-                className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold text-center hover:shadow-lg transition"
+                className="flex-1 py-3 bg-gradient-to-r from-[#C6B677] to-[#DBB957] text-white rounded-lg font-semibold text-center hover:shadow-lg transition"
               >
                 Go to Playground
               </Link>

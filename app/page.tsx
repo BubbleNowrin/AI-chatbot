@@ -5,23 +5,23 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+      <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-gradient-to-br from-[#C6B677] to-[#DBB957] rounded-lg flex items-center justify-center shadow-md">
               <span className="text-white font-bold text-xl">A</span>
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
+            <span className="text-2xl font-bold bg-gradient-to-r from-[#C4AD83] to-[#DBB957] text-transparent bg-clip-text">
               AiChat.fi
             </span>
           </div>
           <div className="hidden md:flex space-x-8 items-center">
-            <Link href="/portfolio" className="text-gray-700 hover:text-blue-600 transition font-medium">Portfolio</Link>
-            <Link href="/playground" className="text-gray-700 hover:text-blue-600 transition font-medium">Playground</Link>
-            <a href="#pricing" className="text-gray-700 hover:text-blue-600 transition">Pricing</a>
+            <Link href="/portfolio" className="text-gray-700 hover:text-[#C6B677] transition font-medium">Portfolio</Link>
+            <Link href="/playground" className="text-gray-700 hover:text-[#C6B677] transition font-medium">Playground</Link>
+            <a href="#pricing" className="text-gray-700 hover:text-[#C6B677] transition">Pricing</a>
             <Link 
               href="/dashboard/login" 
-              className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:shadow-lg transition"
+              className="px-6 py-2 bg-gradient-to-r from-[#C6B677] to-[#DBB957] text-white rounded-lg hover:shadow-lg transition"
             >
               Dashboard
             </Link>
@@ -33,33 +33,33 @@ export default function Home() {
       <section className="pt-32 pb-20 px-6 relative overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-400/20 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute top-40 right-10 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-blue-400/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-[#D6E681]/30 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute top-40 right-10 w-96 h-96 bg-[#BABF95]/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-[#C4AD83]/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
         </div>
         
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in-up">
-              <div className="inline-block mb-4 px-4 py-2 bg-gradient-to-r from-cyan-50 to-purple-50 rounded-full border border-cyan-200 animate-bounce-slow">
-                <span className="text-sm font-semibold bg-gradient-to-r from-cyan-600 to-purple-600 text-transparent bg-clip-text">
+              <div className="inline-block mb-4 px-4 py-2 bg-[#D6E681]/20 rounded-full border border-[#BABF95] animate-bounce-slow">
+                <span className="text-sm font-semibold text-[#C4AD83]">
                   🇫🇮 Made in Finland
                 </span>
               </div>
               <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900">
                 Transform Your Website with
-                <span className="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 text-transparent bg-clip-text animate-gradient">
+                <span className="block bg-gradient-to-r from-[#C4AD83] via-[#C6B677] to-[#DBB957] text-transparent bg-clip-text">
                   AI Chatbot Solutions
                 </span>
               </h1>
               <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-                Choose from <strong>4 intelligent chatbot types</strong>: Basic Q&A, Memory-Based, Knowledge Base, or Agent Mode with smart routing. 
+                Choose from <strong>5 intelligent chatbot types</strong>: Website Widget, Basic Q&A, Memory-Based, Knowledge Base, or Agent Mode with smart routing. 
                 Built in Helsinki, converting visitors into customers 24/7 across Finland and beyond.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link 
                   href="/portfolio"
-                  className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:shadow-2xl hover:scale-105 transition-all text-center transform hover:-translate-y-1 duration-300"
+                  className="group px-8 py-4 bg-gradient-to-r from-[#C6B677] to-[#DBB957] text-white rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all text-center transform hover:-translate-y-1 duration-300"
                 >
                   <span className="flex items-center justify-center gap-2">
                     View Portfolio
@@ -70,26 +70,26 @@ export default function Home() {
                 </Link>
                 <Link 
                   href="/playground"
-                  className="group px-8 py-4 border-2 border-gray-300 text-gray-900 rounded-xl font-semibold hover:border-blue-600 hover:text-blue-600 transition text-center hover:shadow-lg transform hover:-translate-y-1 duration-300"
+                  className="group px-8 py-4 border-2 border-[#C6B677] text-[#C4AD83] rounded-xl font-semibold hover:bg-[#D6E681]/20 transition text-center hover:shadow-lg transform hover:-translate-y-1 duration-300"
                 >
                   Try Playground
                 </Link>
               </div>
               <div className="mt-12 flex items-center gap-8 text-sm text-gray-700">
                 <div className="flex items-center gap-2 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                  <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#C6B677]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>5-minute setup</span>
                 </div>
                 <div className="flex items-center gap-2 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                  <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#C6B677]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>No coding needed</span>
                 </div>
                 <div className="flex items-center gap-2 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-                  <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#C6B677]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>24/7 support</span>
@@ -97,9 +97,9 @@ export default function Home() {
               </div>
             </div>
             <div className="relative animate-fade-in-right">
-              <div className="relative z-10 bg-gradient-to-br from-cyan-50 via-blue-50 to-purple-50 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-shadow duration-500">
+              <div className="relative z-10 bg-gradient-to-br from-[#D6E681]/20 to-[#BABF95]/20 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-shadow duration-500">
                 <div className="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition-transform duration-300">
-                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4 flex items-center justify-between">
+                  <div className="bg-gradient-to-r from-[#C6B677] to-[#DBB957] p-4 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="w-3 h-3 bg-red-400 rounded-full animate-pulse"></div>
                       <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
@@ -108,19 +108,19 @@ export default function Home() {
                   </div>
                   <div className="p-6 space-y-4">
                     <div className="flex gap-3 animate-slide-in-left">
-                      <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex-shrink-0"></div>
+                      <div className="w-10 h-10 bg-gradient-to-br from-[#C6B677] to-[#DBB957] rounded-full flex-shrink-0"></div>
                       <div className="flex-1 bg-gray-100 rounded-2xl rounded-tl-none p-4">
                         <p className="text-sm text-gray-800">Hi! How can I help you today? 👋</p>
                       </div>
                     </div>
                     <div className="flex gap-3 justify-end animate-slide-in-right" style={{ animationDelay: '0.3s' }}>
-                      <div className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl rounded-tr-none p-4 max-w-[80%]">
+                      <div className="flex-1 bg-gradient-to-r from-[#C6B677] to-[#DBB957] rounded-2xl rounded-tr-none p-4 max-w-[80%]">
                         <p className="text-sm text-white">What are your business hours?</p>
                       </div>
                     </div>
                     {/* Typing indicator */}
                     <div className="flex gap-3 animate-slide-in-left" style={{ animationDelay: '0.5s' }}>
-                      <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex-shrink-0 animate-pulse"></div>
+                      <div className="w-10 h-10 bg-gradient-to-br from-[#C6B677] to-[#DBB957] rounded-full flex-shrink-0 animate-pulse"></div>
                       <div className="flex items-center bg-gray-100 rounded-2xl rounded-tl-none px-5 py-3">
                         <div className="flex gap-1">
                           <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
@@ -130,7 +130,7 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="flex gap-3 animate-slide-in-left" style={{ animationDelay: '0.9s' }}>
-                      <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex-shrink-0"></div>
+                      <div className="w-10 h-10 bg-gradient-to-br from-[#C6B677] to-[#DBB957] rounded-full flex-shrink-0"></div>
                       <div className="flex-1 bg-gray-100 rounded-2xl rounded-tl-none p-4">
                         <p className="text-sm text-gray-800">We're available 24/7 through our AI assistant! For human support, reach us Mon-Fri, 9am-6pm EET. 🕒</p>
                       </div>
@@ -138,24 +138,24 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="absolute -top-6 -right-6 w-72 h-72 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-20 blur-3xl animate-pulse"></div>
-              <div className="absolute -bottom-6 -left-6 w-72 h-72 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full opacity-20 blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div className="absolute -top-6 -right-6 w-72 h-72 bg-[#BABF95] rounded-full opacity-20 blur-3xl animate-pulse"></div>
+              <div className="absolute -bottom-6 -left-6 w-72 h-72 bg-[#DBB957] rounded-full opacity-20 blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Live Demo Section */}
-      <section id="demo" className="py-20 px-6 bg-gradient-to-b from-white via-purple-50/30 to-white relative overflow-hidden">
+      <section id="demo" className="py-20 px-6 bg-gradient-to-b from-white via-[#D6E681]/10 to-white relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-10 right-10 w-96 h-96 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-20 blur-3xl animate-float"></div>
-          <div className="absolute bottom-10 left-10 w-96 h-96 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-20 blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute top-10 right-10 w-96 h-96 bg-[#BABF95]/30 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-10 left-10 w-96 h-96 bg-[#C4AD83]/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
         </div>
         
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 animate-fade-in-up">
-            <div className="inline-block mb-4 px-6 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full border-2 border-blue-300 animate-pulse-slow">
-              <span className="text-sm font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
+            <div className="inline-block mb-4 px-6 py-2 bg-gradient-to-r from-[#D6E681]/30 to-[#DBB957]/30 rounded-full border-2 border-[#C6B677] animate-pulse-slow">
+              <span className="text-sm font-bold bg-gradient-to-r from-[#C4AD83] to-[#DBB957] text-transparent bg-clip-text">
                 🎯 LIVE DEMO - Click the chat icon below →
               </span>
             </div>
@@ -169,9 +169,9 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-blue-200 hover:border-blue-400 transition-all duration-300 animate-scale-in">
+            <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-[#BABF95] hover:border-[#C6B677] transition-all duration-300 animate-scale-in">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#C6B677] to-[#DBB957] rounded-xl flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                   </svg>
@@ -183,19 +183,19 @@ export default function Home() {
               </div>
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#C6B677] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Test real conversations with AI</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#C6B677] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>See how lead capture works</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#C6B677] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Experience the user interface</span>
@@ -203,9 +203,9 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-purple-200 hover:border-purple-400 transition-all duration-300 animate-scale-in" style={{ animationDelay: '0.2s' }}>
+            <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-[#BABF95] hover:border-[#C4AD83] transition-all duration-300 animate-scale-in" style={{ animationDelay: '0.2s' }}>
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#BABF95] to-[#C4AD83] rounded-xl flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                   </svg>
@@ -216,13 +216,13 @@ export default function Home() {
                 </div>
               </div>
               <ul className="space-y-3">
-                <li className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-3 border border-blue-200 hover:border-blue-400 transition cursor-pointer">
+                <li className="bg-gradient-to-r from-[#D6E681]/20 to-[#BABF95]/20 rounded-lg p-3 border border-[#C6B677] hover:border-[#DBB957] transition cursor-pointer">
                   <span className="text-gray-800 font-medium">"What are your services?"</span>
                 </li>
-                <li className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-3 border border-blue-200 hover:border-blue-400 transition cursor-pointer">
+                <li className="bg-gradient-to-r from-[#D6E681]/20 to-[#BABF95]/20 rounded-lg p-3 border border-[#C6B677] hover:border-[#DBB957] transition cursor-pointer">
                   <span className="text-gray-800 font-medium">"How much does it cost?"</span>
                 </li>
-                <li className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-3 border border-blue-200 hover:border-blue-400 transition cursor-pointer">
+                <li className="bg-gradient-to-r from-[#D6E681]/20 to-[#BABF95]/20 rounded-lg p-3 border border-[#C6B677] hover:border-[#DBB957] transition cursor-pointer">
                   <span className="text-gray-800 font-medium">"How can I contact you?"</span>
                 </li>
               </ul>
@@ -230,8 +230,8 @@ export default function Home() {
           </div>
 
           <div className="mt-12 text-center">
-            <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-100 to-orange-100 border-2 border-yellow-400 rounded-2xl shadow-lg animate-bounce-slow">
-              <svg className="w-8 h-8 text-orange-500 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#D6E681]/40 to-[#DBB957]/40 border-2 border-[#C6B677] rounded-2xl shadow-lg animate-bounce-slow">
+              <svg className="w-8 h-8 text-[#C6B677] animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z" />
               </svg>
               <span className="text-lg font-bold text-gray-800">
@@ -251,7 +251,7 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:-translate-y-2 animate-fade-in-up">
-              <div className="w-14 h-14 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-14 h-14 bg-gradient-to-br from-[#C6B677] to-[#DBB957] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
@@ -263,7 +263,7 @@ export default function Home() {
             </div>
             
             <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:-translate-y-2 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-14 h-14 bg-gradient-to-br from-[#BABF95] to-[#C4AD83] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
@@ -275,7 +275,7 @@ export default function Home() {
             </div>
             
             <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:-translate-y-2 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-              <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-14 h-14 bg-gradient-to-br from-[#C4AD83] to-[#DBB957] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
@@ -291,7 +291,7 @@ export default function Home() {
 
       {/* How It Works Section */}
       <section id="how-it-works" className="py-20 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-blue-50/30 to-white -z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-[#D6E681]/10 to-white -z-10"></div>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">How It Works</h2>
@@ -299,8 +299,8 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="relative animate-scale-in">
-              <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-8 h-full border-2 border-cyan-200 hover:border-cyan-400 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-2">
-                <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex items-center justify-center mb-6 text-white font-bold text-xl shadow-lg animate-bounce-slow">
+              <div className="bg-gradient-to-br from-[#D6E681]/30 to-[#BABF95]/30 rounded-2xl p-8 h-full border-2 border-[#BABF95] hover:border-[#C6B677] transition-all duration-300 hover:shadow-xl transform hover:-translate-y-2">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#C6B677] to-[#DBB957] rounded-full flex items-center justify-center mb-6 text-white font-bold text-xl shadow-lg animate-bounce-slow">
                   1
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-gray-900">Tell Us About Your Business</h3>
@@ -309,15 +309,15 @@ export default function Home() {
                 </p>
               </div>
               <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
-                <svg className="w-8 h-8 text-blue-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 text-[#C6B677] animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
                 </svg>
               </div>
             </div>
             
             <div className="relative animate-scale-in" style={{ animationDelay: '0.2s' }}>
-              <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 h-full border-2 border-blue-200 hover:border-blue-400 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-2">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center mb-6 text-white font-bold text-xl shadow-lg animate-bounce-slow" style={{ animationDelay: '0.2s' }}>
+              <div className="bg-gradient-to-br from-[#BABF95]/30 to-[#C4AD83]/30 rounded-2xl p-8 h-full border-2 border-[#C4AD83] hover:border-[#C6B677] transition-all duration-300 hover:shadow-xl transform hover:-translate-y-2">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#C4AD83] to-[#C6B677] rounded-full flex items-center justify-center mb-6 text-white font-bold text-xl shadow-lg animate-bounce-slow" style={{ animationDelay: '0.2s' }}>
                   2
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-gray-900">We Build Your AI Assistant</h3>
@@ -326,14 +326,14 @@ export default function Home() {
                 </p>
               </div>
               <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
-                <svg className="w-8 h-8 text-purple-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 text-[#C4AD83] animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
                 </svg>
               </div>
             </div>
             
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 h-full border-2 border-purple-200 hover:border-purple-400 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-2 animate-scale-in" style={{ animationDelay: '0.4s' }}>
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6 text-white font-bold text-xl shadow-lg animate-bounce-slow" style={{ animationDelay: '0.4s' }}>
+            <div className="bg-gradient-to-br from-[#C4AD83]/30 to-[#DBB957]/30 rounded-2xl p-8 h-full border-2 border-[#DBB957] hover:border-[#C6B677] transition-all duration-300 hover:shadow-xl transform hover:-translate-y-2 animate-scale-in" style={{ animationDelay: '0.4s' }}>
+              <div className="w-12 h-12 bg-gradient-to-br from-[#C6B677] to-[#DBB957] rounded-full flex items-center justify-center mb-6 text-white font-bold text-xl shadow-lg animate-bounce-slow" style={{ animationDelay: '0.4s' }}>
                 3
               </div>
               <h3 className="text-2xl font-bold mb-3 text-gray-900">Go Live & Grow</h3>
@@ -350,12 +350,58 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Choose Your Chatbot Type</h2>
-            <p className="text-xl text-gray-600">Different solutions for different needs - all transparently priced</p>
+            <p className="text-xl text-gray-600">5 different solutions for different needs - all transparently priced</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          
+          {/* First Row: Widget + Basic + Memory */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-8">
+            {/* Widget Chatbot */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-300 hover:border-[#BABF95] transition-all hover:-translate-y-2">
+              <div className="w-12 h-12 bg-gradient-to-r from-gray-600 to-gray-700 rounded-xl flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-2">Widget Chat</h3>
+              <div className="mb-6">
+                <span className="text-4xl font-bold">$49</span>
+                <span className="text-gray-600">/month</span>
+              </div>
+              <p className="text-sm text-gray-600 mb-6">Floating chat widget for websites</p>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-start gap-2">
+                  <svg className="w-5 h-5 text-[#C6B677] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">500 messages/month</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <svg className="w-5 h-5 text-[#C6B677] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Easy embed code</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <svg className="w-5 h-5 text-[#C6B677] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Lead capture</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <svg className="w-5 h-5 text-[#C6B677] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Dashboard access</span>
+                </li>
+              </ul>
+              <a href="#demo" className="block w-full py-3 text-center border-2 border-[#C6B677] text-[#C4AD83] rounded-xl font-semibold hover:bg-[#D6E681]/20 transition">
+                Try Now
+              </a>
+            </div>
+
             {/* Basic Chatbot */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-blue-200 hover:border-blue-500 transition-all hover:-translate-y-2">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mb-4">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-[#BABF95] hover:border-[#C6B677] transition-all hover:-translate-y-2">
+              <div className="w-12 h-12 bg-gradient-to-r from-[#C6B677] to-[#DBB957] rounded-xl flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                 </svg>
@@ -368,38 +414,38 @@ export default function Home() {
               <p className="text-sm text-gray-600 mb-6">Simple Q&A for straightforward needs</p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#C6B677] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">1,000 messages/month</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#C6B677] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Lead capture form</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#C6B677] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Basic analytics</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#C6B677] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Email support</span>
                 </li>
               </ul>
-              <a href="/portfolio" className="block w-full py-3 text-center border-2 border-blue-500 text-blue-600 rounded-xl font-semibold hover:bg-blue-50 transition">
+              <a href="/portfolio" className="block w-full py-3 text-center border-2 border-[#C6B677] text-[#C4AD83] rounded-xl font-semibold hover:bg-[#D6E681]/20 transition">
                 Learn More
               </a>
             </div>
 
             {/* Memory-Based Chatbot */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-purple-200 hover:border-purple-500 transition-all hover:-translate-y-2">
-              <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-4">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-[#C4AD83] hover:border-[#DBB957] transition-all hover:-translate-y-2">
+              <div className="w-12 h-12 bg-gradient-to-r from-[#BABF95] to-[#C4AD83] rounded-xl flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
@@ -412,38 +458,41 @@ export default function Home() {
               <p className="text-sm text-gray-600 mb-6">Remembers conversations & learns</p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#C6B677] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">5,000 messages/month</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#C6B677] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Conversation memory</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#C6B677] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Personalized responses</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#C6B677] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Advanced analytics</span>
                 </li>
               </ul>
-              <a href="/portfolio" className="block w-full py-3 text-center border-2 border-purple-500 text-purple-600 rounded-xl font-semibold hover:bg-purple-50 transition">
+              <a href="/portfolio" className="block w-full py-3 text-center border-2 border-[#BABF95] text-[#C4AD83] rounded-xl font-semibold hover:bg-[#D6E681]/20 transition">
                 Learn More
               </a>
             </div>
+          </div>
 
+          {/* Second Row: Knowledge Base + Agent (centered) */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Knowledge Base */}
-            <div className="bg-gradient-to-br from-green-600 to-emerald-600 rounded-2xl p-8 shadow-2xl transform scale-105 relative border-2 border-green-400">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-1 rounded-full text-sm font-bold">
+            <div className="bg-gradient-to-br from-[#C6B677] to-[#DBB957] rounded-2xl p-8 shadow-2xl relative border-2 border-[#DBB957] hover:-translate-y-2 transition-all">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#D6E681] to-[#BABF95] text-gray-800 px-4 py-1 rounded-full text-sm font-bold">
                 RECOMMENDED
               </div>
               <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
@@ -454,9 +503,9 @@ export default function Home() {
               <h3 className="text-2xl font-bold mb-2 text-white">Knowledge Base</h3>
               <div className="mb-6">
                 <span className="text-4xl font-bold text-white">$299</span>
-                <span className="text-green-100">/month</span>
+                <span className="text-white/80">/month</span>
               </div>
-              <p className="text-sm text-green-50 mb-6">Trained on your custom data & docs</p>
+              <p className="text-sm text-white/90 mb-6">Trained on your custom data & docs</p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-2">
                   <svg className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -483,14 +532,14 @@ export default function Home() {
                   <span className="text-white">Priority support</span>
                 </li>
               </ul>
-              <a href="/portfolio" className="block w-full py-3 text-center bg-white text-green-600 rounded-xl font-semibold hover:shadow-xl transition">
+              <a href="/portfolio" className="block w-full py-3 text-center bg-white text-[#C4AD83] rounded-xl font-semibold hover:shadow-xl transition">
                 Learn More
               </a>
             </div>
 
             {/* Agent Mode */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-orange-200 hover:border-orange-500 transition-all hover:-translate-y-2">
-              <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center mb-4">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-[#BABF95] hover:border-[#C4AD83] transition-all hover:-translate-y-2">
+              <div className="w-12 h-12 bg-gradient-to-r from-[#BABF95] to-[#C6B677] rounded-xl flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
@@ -503,31 +552,31 @@ export default function Home() {
               <p className="text-sm text-gray-600 mb-6">Smart routing to departments & agents</p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#C6B677] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">25,000 messages/month</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#C6B677] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Department routing</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#C6B677] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Live agent handoff</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#C6B677] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Dedicated support</span>
                 </li>
               </ul>
-              <a href="/portfolio" className="block w-full py-3 text-center border-2 border-orange-500 text-orange-600 rounded-xl font-semibold hover:bg-orange-50 transition">
+              <a href="/portfolio" className="block w-full py-3 text-center border-2 border-[#BABF95] text-[#C4AD83] rounded-xl font-semibold hover:bg-[#D6E681]/20 transition">
                 Learn More
               </a>
             </div>
@@ -535,16 +584,16 @@ export default function Home() {
 
           {/* Enterprise Option */}
           <div className="mt-12 max-w-4xl mx-auto">
-            <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-8 shadow-2xl text-center text-white">
+            <div className="bg-gradient-to-r from-[#C4AD83] to-[#C6B677] rounded-2xl p-8 shadow-2xl text-center text-white">
               <h3 className="text-3xl font-bold mb-4">Enterprise Solutions</h3>
-              <p className="text-xl text-gray-300 mb-6">
+              <p className="text-xl text-white/90 mb-6">
                 Need unlimited messages, custom integrations, or white-label solutions? Let's talk.
               </p>
               <div className="flex gap-4 justify-center flex-wrap">
-                <a href="mailto:info@aichat.fi" className="px-8 py-3 bg-white text-gray-900 rounded-xl font-semibold hover:shadow-xl transition">
+                <a href="mailto:info@aichat.fi" className="px-8 py-3 bg-white text-[#C4AD83] rounded-xl font-semibold hover:shadow-xl transition">
                   Contact Sales
                 </a>
-                <a href="/playground" className="px-8 py-3 bg-transparent border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-gray-900 transition">
+                <a href="/playground" className="px-8 py-3 bg-transparent border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-[#C4AD83] transition">
                   Try Playground
                 </a>
               </div>
@@ -553,88 +602,48 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center animate-scale-in">
-          <div className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-3xl p-12 shadow-2xl relative overflow-hidden hover:shadow-3xl transition-shadow duration-500">
-            {/* Animated background particles */}
-            <div className="absolute inset-0">
-              <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full animate-float"></div>
-              <div className="absolute bottom-10 right-10 w-32 h-32 bg-white/10 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
-              <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white/10 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
-            </div>
-            
-            <div className="relative z-10">
-              <h2 className="text-4xl font-bold text-white mb-4 animate-fade-in-up">
-                Ready to Transform Your Customer Experience?
-              </h2>
-              <p className="text-xl text-white/90 mb-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                Join Finnish businesses already using AI to grow their customer base
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-                <a 
-                  href="#demo"
-                  className="group px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold hover:shadow-2xl hover:scale-105 transition-all transform hover:-translate-y-1 duration-300"
-                >
-                  <span className="flex items-center justify-center gap-2">
-                    Try Live Demo
-                    <svg className="w-5 h-5 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </span>
-                </a>
-                <a 
-                  href="mailto:hello@aichat.fi"
-                  className="px-8 py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-blue-600 transition-all transform hover:-translate-y-1 duration-300"
-                >
-                  Contact Sales
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+     
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-6">
+      <footer className="bg-gradient-to-b from-[#C4AD83] to-[#C6B677] text-white py-12 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-lg"></div>
+                <div className="w-8 h-8 bg-gradient-to-br from-[#DBB957] to-white rounded-lg"></div>
                 <span className="text-xl font-bold">AiChat.fi</span>
               </div>
-              <p className="text-gray-400 text-sm">
+              <p className="text-white/80 text-sm">
                 Professional AI chatbot solutions for Finnish businesses.
               </p>
             </div>
             <div>
               <h4 className="font-bold mb-4">Product</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><a href="#services" className="hover:text-white transition">Features</a></li>
-                <li><a href="#pricing" className="hover:text-white transition">Pricing</a></li>
-                <li><a href="#demo" className="hover:text-white transition">Live Demo</a></li>
-                <li><Link href="/dashboard/login" className="hover:text-white transition">Dashboard</Link></li>
+              <ul className="space-y-2 text-white/80 text-sm">
+                <li><a href="#services" className="hover:text-[#DBB957] transition">Features</a></li>
+                <li><a href="#pricing" className="hover:text-[#DBB957] transition">Pricing</a></li>
+                <li><a href="#demo" className="hover:text-[#DBB957] transition">Live Demo</a></li>
+                <li><Link href="/dashboard/login" className="hover:text-[#DBB957] transition">Dashboard</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-4">Company</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><a href="#" className="hover:text-white transition">About Us</a></li>
-                <li><a href="#" className="hover:text-white transition">Contact</a></li>
-                <li><a href="#" className="hover:text-white transition">Careers</a></li>
+              <ul className="space-y-2 text-white/80 text-sm">
+                <li><a href="#" className="hover:text-[#DBB957] transition">About Us</a></li>
+                <li><a href="#" className="hover:text-[#DBB957] transition">Contact</a></li>
+                <li><a href="#" className="hover:text-[#DBB957] transition">Careers</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-4">Contact</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
+              <ul className="space-y-2 text-white/80 text-sm">
                 <li>📍 Helsinki, Finland</li>
                 <li>📧 hello@aichat.fi</li>
                 <li>☎️ +358 XX XXX XXXX</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
+          <div className="border-t border-white/20 pt-8 text-center text-white/80 text-sm">
             <p>© 2025 AiChat.fi. Made with ❤️ in Finland. All rights reserved.</p>
           </div>
         </div>
@@ -643,7 +652,7 @@ export default function Home() {
       {/* Live Chat Widget */}
       <ChatWidget 
         websiteUrl="https://aichat.fi"
-        primaryColor="#3b82f6"
+        primaryColor="#C6B677"
         position="bottom-right"
       />
     </div>

@@ -35,25 +35,25 @@ const chatModes = [
     id: 'basic' as ChatMode,
     name: 'Basic Chat',
     description: 'Simple Q&A without memory',
-    color: 'from-blue-500 to-cyan-500'
+    color: 'from-[#BABF95] to-[#C4AD83]'
   },
   {
     id: 'memory' as ChatMode,
     name: 'Memory Mode',
     description: 'Remembers conversation history',
-    color: 'from-purple-500 to-pink-500'
+    color: 'from-[#C4AD83] to-[#C6B677]'
   },
   {
     id: 'knowledge' as ChatMode,
     name: 'Knowledge Base',
     description: 'Trained on custom data',
-    color: 'from-green-500 to-emerald-500'
+    color: 'from-[#C4AD83] to-[#DBB957]'
   },
   {
     id: 'agent' as ChatMode,
     name: 'Agent Mode',
     description: 'Routes to departments',
-    color: 'from-orange-500 to-red-500'
+    color: 'from-[#BABF95] to-[#C6B677]'
   }
 ];
 
@@ -275,7 +275,7 @@ export default function PlaygroundPage() {
           >
             {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
-          <Link href="/" className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <Link href="/" className="text-xl font-bold bg-gradient-to-r from-[#C6B677] to-[#DBB957] bg-clip-text text-transparent">
             AI Playground
           </Link>
         </div>
@@ -305,7 +305,7 @@ export default function PlaygroundPage() {
             >
               <div className="mb-6">
                 <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                  <Settings className="w-5 h-5 text-blue-600" />
+                  <Settings className="w-5 h-5 text-[#C6B677]" />
                   Chat Mode
                 </h3>
                 <div className="space-y-3">
@@ -344,7 +344,7 @@ export default function PlaygroundPage() {
                       <button
                         onClick={() => fileInputRef.current?.click()}
                         disabled={isUploading}
-                        className="w-full px-4 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg font-semibold hover:shadow-lg transition flex items-center justify-center gap-2 disabled:opacity-50"
+                        className="w-full px-4 py-3 bg-gradient-to-r from-[#C4AD83] to-[#DBB957] text-white rounded-lg font-semibold hover:shadow-lg transition flex items-center justify-center gap-2 disabled:opacity-50"
                       >
                         <Upload className="w-4 h-4" />
                         {isUploading ? 'Uploading...' : 'Upload Document'}
@@ -354,7 +354,7 @@ export default function PlaygroundPage() {
                           <p className="text-xs font-semibold text-gray-700">Uploaded Files:</p>
                           {uploadedFiles.map((file, idx) => (
                             <div key={idx} className="flex items-center gap-2 text-xs text-gray-600 bg-green-50 p-2 rounded">
-                              <CheckCircle className="w-3 h-3 text-green-600" />
+                              <CheckCircle className="w-3 h-3 text-[#C4AD83]" />
                               <span className="truncate">{file}</span>
                             </div>
                           ))}
@@ -392,7 +392,7 @@ export default function PlaygroundPage() {
                   <button
                     onClick={handleExportChat}
                     disabled={messages.length === 0}
-                    className="w-full px-4 py-3 bg-blue-50 text-blue-600 rounded-lg font-semibold hover:bg-blue-100 transition flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-3 bg-[#D6E681]/30 text-[#C6B677] rounded-lg font-semibold hover:bg-[#D6E681]/50 transition flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Download className="w-4 h-4" />
                     Export Chat
@@ -412,15 +412,15 @@ export default function PlaygroundPage() {
 
               <div className="border-t pt-6 mt-6">
                 <div className={`bg-gradient-to-br ${selectedMode?.color}/10 p-4 rounded-xl border-2 ${
-                  chatMode === 'basic' ? 'border-blue-200' :
-                  chatMode === 'memory' ? 'border-purple-200' :
-                  chatMode === 'knowledge' ? 'border-green-200' :
+                  chatMode === 'basic' ? 'border-[#BABF95]' :
+                  chatMode === 'memory' ? 'border-[#C4AD83]/30' :
+                  chatMode === 'knowledge' ? 'border-[#D6E681]' :
                   'border-orange-200'
                 }`}>
                   <Sparkles className={`w-8 h-8 mb-2 ${
-                    chatMode === 'basic' ? 'text-blue-600' :
-                    chatMode === 'memory' ? 'text-purple-600' :
-                    chatMode === 'knowledge' ? 'text-green-600' :
+                    chatMode === 'basic' ? 'text-[#C6B677]' :
+                    chatMode === 'memory' ? 'text-[#C4AD83]' :
+                    chatMode === 'knowledge' ? 'text-[#C4AD83]' :
                     'text-orange-600'
                   }`} />
                   <h4 className="font-bold text-gray-900 mb-2">{selectedMode?.name} Demo</h4>
@@ -473,7 +473,7 @@ export default function PlaygroundPage() {
                       <button
                         key={idx}
                         onClick={() => setInput(suggestion)}
-                        className="p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-blue-500 transition text-gray-700 hover:text-blue-600 font-medium"
+                        className="p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-[#BABF95] transition text-gray-700 hover:text-[#C6B677] font-medium"
                       >
                         {suggestion}
                       </button>
@@ -487,7 +487,7 @@ export default function PlaygroundPage() {
                       <button
                         key={idx}
                         onClick={() => setInput(suggestion)}
-                        className="p-4 bg-white rounded-xl border-2 border-purple-200 hover:border-purple-500 transition text-gray-700 hover:text-purple-600 font-medium"
+                        className="p-4 bg-white rounded-xl border-2 border-[#C4AD83]/30 hover:border-[#C4AD83] transition text-gray-700 hover:text-[#C4AD83] font-medium"
                       >
                         {suggestion}
                       </button>
@@ -507,7 +507,7 @@ export default function PlaygroundPage() {
                             setInput(suggestion);
                           }
                         }}
-                        className="p-4 bg-white rounded-xl border-2 border-green-200 hover:border-green-500 transition text-gray-700 hover:text-green-600 font-medium"
+                        className="p-4 bg-white rounded-xl border-2 border-[#D6E681] hover:border-[#C6B677] transition text-gray-700 hover:text-[#C4AD83] font-medium"
                       >
                         {suggestion}
                       </button>
@@ -547,7 +547,7 @@ export default function PlaygroundPage() {
                     <div className={`max-w-3xl ${message.role === 'user' ? 'order-1' : ''}`}>
                       <div className={`p-4 rounded-2xl ${
                         message.role === 'user'
-                          ? 'bg-blue-600 text-white'
+                          ? 'bg-[#C6B677] text-white'
                           : 'bg-white text-gray-900 shadow-md'
                       }`}>
                         <p className="whitespace-pre-wrap">{message.content}</p>
@@ -561,7 +561,7 @@ export default function PlaygroundPage() {
                           className="text-gray-400 hover:text-gray-600 transition"
                         >
                           {copiedIndex === index ? (
-                            <Check className="w-4 h-4 text-green-500" />
+                            <Check className="w-4 h-4 text-[#C6B677]" />
                           ) : (
                             <Copy className="w-4 h-4" />
                           )}
@@ -612,7 +612,7 @@ export default function PlaygroundPage() {
                     onKeyPress={handleKeyPress}
                     placeholder={`Message ${selectedMode?.name}...`}
                     rows={1}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 resize-none"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#C6B677] resize-none"
                     style={{ minHeight: '52px', maxHeight: '150px' }}
                   />
                 </div>

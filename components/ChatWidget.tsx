@@ -17,7 +17,7 @@ interface ChatWidgetProps {
 
 export default function ChatWidget({ 
   websiteUrl = '', 
-  primaryColor = '#3b82f6',
+  primaryColor = '#C6B677',
   position = 'bottom-right' 
 }: ChatWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -227,7 +227,7 @@ export default function ChatWidget({
                     type="text"
                     value={leadData.name}
                     onChange={(e) => setLeadData({ ...leadData, name: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C6B677] focus:border-transparent"
                     required
                   />
                 </div>
@@ -239,7 +239,7 @@ export default function ChatWidget({
                     type="email"
                     value={leadData.email}
                     onChange={(e) => setLeadData({ ...leadData, email: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C6B677] focus:border-transparent"
                     required
                   />
                 </div>
@@ -297,7 +297,7 @@ export default function ChatWidget({
                     value={inputMessage}
                     onChange={(e) => setInputMessage(e.target.value)}
                     placeholder="Type your message..."
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C6B677] focus:border-transparent"
                     disabled={isLoading}
                   />
                   <button
