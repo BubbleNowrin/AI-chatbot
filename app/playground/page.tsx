@@ -221,6 +221,18 @@ export default function PlaygroundPage() {
       if (data.success) {
         setUploadedFiles(prev => [...prev, data.fileName]);
         
+        // Store file content in localStorage for knowledge base
+        if (data.content && typeof window !== 'undefined') {
+          const knowledgeBase = JSON.parse(localStorage.getItem('knowledge_base') || '{}');
+          knowledgeBase[data.fileName] = {
+            content: data.content,
+            fileName: data.fileName,
+            fileSize: data.fileSize,
+            uploadedAt: new Date().toISOString()
+          };
+          localStorage.setItem('knowledge_base', JSON.stringify(knowledgeBase));
+        }
+        
         Swal.fire({
           icon: 'success',
           title: 'File Uploaded!',
@@ -231,7 +243,7 @@ export default function PlaygroundPage() {
               <p class="mt-2 text-sm text-gray-500">The chatbot now has access to this document!</p>
             </div>
           `,
-          confirmButtonColor: '#10b981'
+          confirmButtonColor: '#C6B677'
         });
 
         // Add system message about upload

@@ -1,7 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile, mkdir } from 'fs/promises';
-import { join } from 'path';
-import { existsSync } from 'fs';
 
 export async function POST(req: NextRequest) {
   try {
@@ -36,22 +33,11 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Create uploads directory if it doesn't exist
-    const uploadsDir = join(process.cwd(), 'uploads', mode);
-    if (!existsSync(uploadsDir)) {
-      await mkdir(uploadsDir, { recursive: true });
-    }
-
-    // Save file
+    // Read file content directly (no file system write in production)
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    const timestamp = Date.now();
-    const safeName = fileName.replace(/[^a-z0-9.-]/gi, '_');
-    const filePath = join(uploadsDir, `${timestamp}_${safeName}`);
-    
-    await writeFile(filePath, buffer);
 
-    // Extract text content (basic implementation)
+    // Extract text content
     let content = '';
     if (fileName.endsWith('.txt') || fileName.endsWith('.md') || fileName.endsWith('.json')) {
       content = buffer.toString('utf-8');
@@ -61,15 +47,16 @@ export async function POST(req: NextRequest) {
       const lines = content.split('\n').slice(0, 10);
       content = `CSV Preview (first 10 rows):\n${lines.join('\n')}`;
     } else if (fileName.endsWith('.pdf')) {
-      content = 'PDF file uploaded. Content extraction would require pdf-parse library.';
+      content = 'PDF file uploaded. Content extraction would require pdf-parse library in a server environment.';
     }
 
+    // Return the content to be stored client-side
     return NextResponse.json({
       success: true,
       fileName: file.name,
       fileSize: file.size,
-      filePath: filePath,
-      preview: content.substring(0, 500), // First 500 chars
+      content: content, // Full content for client-side storage
+      preview: content.substring(0, 500), // First 500 chars for preview
       message: 'File uploaded successfully. Knowledge base updated!'
     });
 
