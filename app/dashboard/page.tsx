@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
 import { motion } from 'framer-motion';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
@@ -26,10 +27,19 @@ export default function DashboardPage() {
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [selectedConversation, setSelectedConversation] = useState<Conversation | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
+    // Check authentication
+    const auth = sessionStorage.getItem('dashboard_auth');
+    if (auth !== 'true') {
+      router.push('/dashboard/login');
+      return;
+    }
+    setIsAuthenticated(true);
     loadLocalConversations();
-  }, []);
+  }, [router]);
 
   const loadLocalConversations = () => {
     setIsLoading(true);
@@ -105,6 +115,11 @@ export default function DashboardPage() {
     }
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('dashboard_auth');
+    router.push('/dashboard/login');
+  };
+
   const formatDate = (date: string) => {
     return new Date(date).toLocaleDateString('en-US', {
       month: 'short',
@@ -161,6 +176,10 @@ export default function DashboardPage() {
     }
   };
 
+  if (!isAuthenticated) {
+    return null; // Will redirect to login
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
       {/* Header */}
@@ -178,12 +197,20 @@ export default function DashboardPage() {
               </h1>
               <p className="text-gray-600 mt-1">Track your conversations and engagement</p>
             </div>
-            <Link 
-              href="/"
-              className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
-            >
-              ← Back to Home
-            </Link>
+            <div className="flex items-center space-x-3">
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors font-medium"
+              >
+                🔓 Logout
+              </button>
+              <Link 
+                href="/"
+                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
+              >
+                ← Back to Home
+              </Link>
+            </div>
           </div>
         </div>
       </motion.div>
@@ -221,7 +248,7 @@ export default function DashboardPage() {
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                   </svg>
-                  Your data is stored locally and private
+                  Your conversation data is private
                 </p>
               </motion.div>
 
@@ -383,7 +410,7 @@ export default function DashboardPage() {
                         cx="50%"
                         cy="50%"
                         labelLine={false}
-                        label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                        label={({ name, percent }) => `${name}: ${percent ? (percent * 100).toFixed(0) : 0}%`}
                         outerRadius={80}
                         fill="#8884d8"
                         dataKey="value"

@@ -524,7 +524,7 @@ export default function Home() {
                 <li><a href="#services" className="hover:text-white transition">Features</a></li>
                 <li><a href="#pricing" className="hover:text-white transition">Pricing</a></li>
                 <li><a href="#demo" className="hover:text-white transition">Live Demo</a></li>
-                <li><Link href="/dashboard" className="hover:text-white transition">Dashboard</Link></li>
+                <li><Link href="/dashboard/login" className="hover:text-white transition">Dashboard</Link></li>
               </ul>
             </div>
             <div>
