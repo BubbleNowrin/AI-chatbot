@@ -11,23 +11,31 @@ function generateDemoResponse(userMessage: string, websiteContext?: string): str
   
   // Common questions
   if (message.includes('price') || message.includes('cost') || message.includes('pricing')) {
-    return "Our pricing starts at $99/month for small businesses. We offer flexible plans based on your needs. Would you like me to connect you with our sales team for a custom quote?";
+    return "We offer three pricing tiers: **Basic** at $99/month (100 conversations, 1 chatbot), **Pro** at $299/month (500 conversations, 3 chatbots), and **Enterprise** with custom pricing for unlimited conversations. Which plan interests you?";
   }
   
-  if (message.includes('service') || message.includes('what do you do')) {
-    return "We offer Web Development, Mobile Apps, Cloud Solutions, and AI Integration services. Our team specializes in creating custom solutions tailored to your business needs. Which service are you most interested in?";
+  if (message.includes('service') || message.includes('what do you do') || message.includes('feature')) {
+    return "We provide AI Chatbot Widgets that embed on your website to capture leads, provide 24/7 support, and engage visitors automatically. Our chatbots include lead capture forms, conversation analytics, and can be trained on your website content. What would you like to know more about?";
   }
   
   if (message.includes('contact') || message.includes('email') || message.includes('phone')) {
-    return "You can reach us at info@techcorp.com or call (555) 123-4567. Our office is located at 123 Tech Street, San Francisco, CA 94105. We're available Monday-Friday, 9am-6pm PST.";
+    return "You can reach us at info@aichat.fi. We're based in Finland and happy to discuss your chatbot needs. Would you like to schedule a demo?";
   }
   
   if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
-    return "Hello! Thanks for reaching out. I'm here to help answer any questions about our services. What would you like to know?";
+    return "Hello! Thanks for your interest in our AI Chatbot Widget. We help businesses capture leads and provide 24/7 support with intelligent chatbots. What would you like to know?";
   }
   
   if (message.includes('help') || message.includes('support')) {
-    return "I'm here to help! You can ask me about our services, pricing, contact information, or any other questions you have. What would you like to know more about?";
+    return "I'm here to help! You can ask me about our chatbot features, pricing plans, integration process, or schedule a demo. What interests you most?";
+  }
+  
+  if (message.includes('how') && message.includes('work')) {
+    return "Our chatbot is easy to set up: 1) Choose your plan, 2) Customize the widget design, 3) Add one line of code to your website. The chatbot starts capturing leads immediately! Want to see a live demo?";
+  }
+  
+  if (message.includes('integration') || message.includes('install') || message.includes('setup')) {
+    return "Integration is super simple - just copy-paste one line of code into your website. The chatbot works on any platform (WordPress, Shopify, custom sites). Takes less than 5 minutes! Need help with setup?";
   }
   
   // Default response with context
@@ -69,14 +77,34 @@ IMPORTANT RULES:
 - Never provide generic AI assistant information about yourself`
       : `You are a customer support AI for an AI Chatbot Widget service for websites. 
 
-OUR BUSINESS:
-- We provide AI Chatbot Widgets that businesses can embed on their websites
-- Our chatbots help capture leads, answer customer questions, and provide 24/7 support
-- Pricing starts at $99/month for small businesses
-- We offer website scraping to train chatbots on your content
-- Contact: info@aichat.fi
+OUR BUSINESS - AI CHATBOT WIDGET FOR WEBSITES:
 
-Keep responses short (2-3 sentences) and focused on OUR chatbot service. Never give generic AI information.`;
+SERVICES:
+- Smart AI chatbots that can be embedded on any website
+- Lead capture with email collection before chat starts
+- 24/7 automated customer support
+- Website content scraping to train chatbots on your business
+- Real-time conversation dashboard
+- Easy integration (just copy-paste a code snippet)
+
+PRICING TIERS:
+- Basic: $99/month (ideal for small businesses) - includes 100 conversations/month, 1 chatbot, basic analytics
+- Pro: $299/month (ideal for growing businesses) - includes 500 conversations/month, 3 chatbots, advanced analytics
+- Enterprise: Custom pricing (ideal for large enterprises) - unlimited conversations, multiple chatbots, custom features
+
+KEY FEATURES:
+- Fully customizable chat widget (colors, position, branding)
+- Lead generation with automatic email capture
+- Conversation history and analytics dashboard
+- AI-powered responses using advanced language models
+- Fast, professional, and easy to set up
+
+CONTACT:
+- Email: info@aichat.fi
+- Location: Based in Finland
+- Website: aichat.fi
+
+IMPORTANT: Keep responses short (2-3 sentences max) and focused on OUR chatbot service. Never give generic AI information about yourself.`;
 
     const messages: Array<{ role: 'system' | 'user' | 'assistant', content: string }> = [
       { role: 'system', content: systemPrompt }
