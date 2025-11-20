@@ -8,7 +8,7 @@ interface Message {
 
 export async function POST(req: NextRequest) {
   try {
-    const { message, mode, history } = await req.json();
+    const { message, mode, history, knowledgeBase } = await req.json();
 
     if (!message) {
       return NextResponse.json(
@@ -52,20 +52,33 @@ Always acknowledge what you remember from previous messages. Build on past conte
         break;
 
       case 'knowledge':
+        let knowledgeContent = '';
+        if (knowledgeBase && Object.keys(knowledgeBase).length > 0) {
+          knowledgeContent = Object.values(knowledgeBase).map((kb: any) => 
+            `--- Document: ${kb.fileName} ---\n${kb.content}\n\n`
+          ).join('');
+        }
+        
         systemPrompt = `You are a Knowledge Base AI trained on custom documentation and data.
+
+${knowledgeContent ? `UPLOADED KNOWLEDGE BASE CONTENT:
+${knowledgeContent}
+
+INSTRUCTIONS:
+- Answer questions based on the uploaded documents above
+- If the question is about content in the documents, provide detailed, accurate answers
+- Quote relevant sections when helpful
+- If information isn't in the documents, clearly state that
+` : `NO KNOWLEDGE BASE CONTENT UPLOADED YET.
 
 COMPANY INFO:
 - Service: Knowledge Base Chatbot ($299/month)
 - Features: Custom training, file uploads (PDF/CSV/TXT), website scraping
 - Best for: Technical support, product catalogs, documentation
 
-TRAINING DATA EXAMPLES:
-- Product specifications and features
-- Technical documentation and guides
-- Company policies and procedures
-- FAQ databases
+Please upload documents to see the knowledge base in action. You can ask questions about uploaded content.`}
 
-Provide detailed, accurate answers based on "trained knowledge". Mention that you can be trained on any custom data.`;
+Always be specific about which document you're referencing when answering.`;
         break;
 
       case 'agent':
@@ -76,18 +89,22 @@ ROUTING LOGIC:
 - Technical support → Route to support department
 - General questions → Route to customer service
 - Contact requests → Route to contact form
+- Billing → Route to billing department
 
 COMPANY INFO:
 - Service: Agent Mode Chatbot ($499/month)
 - Features: Intent detection, smart routing, live agent handoff
 - Best for: Enterprise, multiple departments
 
-IMPORTANT: When detecting specific intents, suggest routing:
-- "I'll connect you with our [department] team"
-- "Let me transfer you to [specialist]"
-- "This requires [department] attention"
+IMPORTANT: When detecting routing intents, provide clickable routing options in this exact format:
+🏷️ **ROUTING OPTIONS:**
+• [Sales Team] - For product inquiries and pricing
+• [Technical Support] - For technical issues and setup
+• [Customer Service] - For general questions
+• [Contact Form] - For direct contact requests
+• [Billing Department] - For billing and payment issues
 
-Also answer general questions but always offer to route for complex matters.`;
+Use this format whenever someone mentions: buy, purchase, sales, support, help, technical, contact, billing, payment, or asks to be transferred.`;
         break;
 
       default:

@@ -103,13 +103,23 @@ export default function PlaygroundPage() {
     setIsLoading(true);
 
     try {
+      // Get knowledge base data from localStorage for knowledge mode
+      let knowledgeBase = {};
+      if (chatMode === 'knowledge' && typeof window !== 'undefined') {
+        const storedKB = localStorage.getItem('knowledge_base');
+        if (storedKB) {
+          knowledgeBase = JSON.parse(storedKB);
+        }
+      }
+
       const response = await fetch('/api/playground', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           message: userMessage.content,
           mode: chatMode,
-          history: messages.map(m => ({ role: m.role, content: m.content }))
+          history: messages.map(m => ({ role: m.role, content: m.content })),
+          knowledgeBase: knowledgeBase
         })
       });
 
@@ -200,6 +210,69 @@ export default function PlaygroundPage() {
     }
   };
 
+  const handleDepartmentRoute = (department: string) => {
+    const routingInfo = {
+      sales: {
+        name: "Sales Team",
+        email: "sales@aichat.fi",
+        message: "You've been routed to our Sales Team! They'll help you with pricing, product demos, and custom solutions."
+      },
+      support: {
+        name: "Technical Support",
+        email: "support@aichat.fi",
+        message: "You've been routed to Technical Support! They'll assist you with setup, troubleshooting, and technical questions."
+      },
+      service: {
+        name: "Customer Service",
+        email: "service@aichat.fi",
+        message: "You've been routed to Customer Service! They'll help you with general inquiries and account questions."
+      },
+      contact: {
+        name: "Contact Form",
+        email: "info@aichat.fi",
+        message: "You've been routed to our Contact Form! Please fill out your details and we'll get back to you within 24 hours."
+      },
+      billing: {
+        name: "Billing Department",
+        email: "billing@aichat.fi",
+        message: "You've been routed to Billing Department! They'll help you with payments, invoices, and subscription questions."
+      }
+    };
+
+    const route = routingInfo[department as keyof typeof routingInfo];
+    
+    Swal.fire({
+      title: `Routing to ${route.name}`,
+      html: `
+        <div class="text-left">
+          <p class="mb-3">${route.message}</p>
+          <div class="bg-blue-50 p-3 rounded border">
+            <p><strong>Department:</strong> ${route.name}</p>
+            <p><strong>Email:</strong> ${route.email}</p>
+            <p class="text-sm text-gray-600 mt-2">In a real implementation, this would:</p>
+            <ul class="text-sm text-gray-600 list-disc list-inside">
+              <li>Transfer to live agent</li>
+              <li>Create support ticket</li>
+              <li>Send email notification</li>
+              <li>Update routing analytics</li>
+            </ul>
+          </div>
+        </div>
+      `,
+      icon: 'success',
+      confirmButtonColor: '#6C596E',
+      confirmButtonText: 'Got it!'
+    });
+
+    // Add system message to chat
+    const routingMessage: Message = {
+      role: 'system',
+      content: `✅ Successfully routed to ${route.name}. ${route.message}`,
+      timestamp: new Date()
+    };
+    setMessages(prev => [...prev, routingMessage]);
+  };
+
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -240,10 +313,16 @@ export default function PlaygroundPage() {
             <div class="text-left">
               <p><strong>File:</strong> ${data.fileName}</p>
               <p><strong>Size:</strong> ${(data.fileSize / 1024).toFixed(2)} KB</p>
-              <p class="mt-2 text-sm text-gray-500">The chatbot now has access to this document!</p>
+              ${data.contentLength ? `<p><strong>Content Length:</strong> ${data.contentLength.toLocaleString()} characters</p>` : ''}
+              <div class="mt-3 p-2 bg-gray-50 rounded text-xs">
+                <p><strong>Preview:</strong></p>
+                <p class="text-gray-600 mt-1">${data.preview}${data.content && data.content.length > 500 ? '...' : ''}</p>
+              </div>
+              <p class="mt-2 text-sm text-gray-500">The chatbot now has access to this document content and can answer questions about it!</p>
             </div>
           `,
-          confirmButtonColor: '#C6B677'
+          confirmButtonColor: '#6C596E',
+          width: 600
         });
 
         // Add system message about upload
@@ -562,7 +641,53 @@ export default function PlaygroundPage() {
                           ? 'bg-[#6C596E] text-white'
                           : 'bg-beige-light text-gray-800 shadow-md'
                       }`}>
-                        <p className="whitespace-pre-wrap">{message.content}</p>
+                        <div className="whitespace-pre-wrap">
+                          {/* Check if message contains routing options for agent mode */}
+                          {chatMode === 'agent' && message.role === 'assistant' && message.content.includes('🏷️ **ROUTING OPTIONS:**') ? (
+                            <div>
+                              {/* Display message before routing options */}
+                              <p>{message.content.split('🏷️ **ROUTING OPTIONS:**')[0]}</p>
+                              
+                              <div className="mt-4 p-3 bg-orange-50 rounded-lg border border-orange-200">
+                                <p className="font-bold text-orange-900 mb-3">🏷️ **ROUTING OPTIONS:**</p>
+                                <div className="space-y-2">
+                                  <button 
+                                    onClick={() => handleDepartmentRoute('sales')}
+                                    className="w-full text-left p-2 bg-white hover:bg-orange-100 rounded border text-sm transition"
+                                  >
+                                    • [Sales Team] - For product inquiries and pricing
+                                  </button>
+                                  <button 
+                                    onClick={() => handleDepartmentRoute('support')}
+                                    className="w-full text-left p-2 bg-white hover:bg-orange-100 rounded border text-sm transition"
+                                  >
+                                    • [Technical Support] - For technical issues and setup
+                                  </button>
+                                  <button 
+                                    onClick={() => handleDepartmentRoute('service')}
+                                    className="w-full text-left p-2 bg-white hover:bg-orange-100 rounded border text-sm transition"
+                                  >
+                                    • [Customer Service] - For general questions
+                                  </button>
+                                  <button 
+                                    onClick={() => handleDepartmentRoute('contact')}
+                                    className="w-full text-left p-2 bg-white hover:bg-orange-100 rounded border text-sm transition"
+                                  >
+                                    • [Contact Form] - For direct contact requests
+                                  </button>
+                                  <button 
+                                    onClick={() => handleDepartmentRoute('billing')}
+                                    className="w-full text-left p-2 bg-white hover:bg-orange-100 rounded border text-sm transition"
+                                  >
+                                    • [Billing Department] - For billing and payment issues
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          ) : (
+                            <p>{message.content}</p>
+                          )}
+                        </div>
                       </div>
                       <div className="flex items-center gap-2 mt-2 px-2">
                         <span className="text-xs text-gray-500">

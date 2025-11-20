@@ -4,8 +4,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Link from 'next/link';
 import { 
-  MessageSquare, 
-  Brain, 
+  MessageSquare,  
   BookOpen, 
   Users, 
   ArrowRight,

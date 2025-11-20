@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import pdf from 'pdf-parse-fork';
 
 export async function POST(req: NextRequest) {
   try {
@@ -47,7 +48,58 @@ export async function POST(req: NextRequest) {
       const lines = content.split('\n').slice(0, 10);
       content = `CSV Preview (first 10 rows):\n${lines.join('\n')}`;
     } else if (fileName.endsWith('.pdf')) {
-      content = 'PDF file uploaded. Content extraction would require pdf-parse library in a server environment.';
+      try {
+        // Extract text from PDF
+        const pdfData = await pdf(buffer);
+        content = pdfData.text;
+        
+        // Clean up the extracted text
+        content = content
+          .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+          .replace(/\n+/g, '\n') // Replace multiple newlines with single newline
+          .trim();
+        
+        if (!content || content.length < 10) {
+          content = `PDF Document: ${file.name}
+
+This PDF file was uploaded but appears to contain mostly images or no extractable text content. 
+
+File Information:
+- Name: ${file.name}
+- Size: ${(file.size / 1024).toFixed(2)} KB
+- Type: PDF Document
+
+For better results, try:
+1. Converting the PDF to text format (.txt) 
+2. Using a PDF with more text content
+3. Ensuring the PDF is not password protected`;
+        } else {
+          // Add header with file info for context
+          content = `PDF Document: ${file.name}
+File Size: ${(file.size / 1024).toFixed(2)} KB
+
+EXTRACTED CONTENT:
+${content}
+
+---
+End of PDF content. You can now answer questions about this document based on the extracted text above.`;
+        }
+      } catch (error) {
+        console.error('PDF parsing error:', error);
+        content = `PDF Document: ${file.name}
+
+Error extracting text from PDF. This may be due to:
+- Password protection
+- Image-only PDF (scanned document)
+- Corrupted file
+- Unsupported PDF format
+
+File Information:
+- Name: ${file.name} 
+- Size: ${(file.size / 1024).toFixed(2)} KB
+
+Please try converting to .txt format for better compatibility.`;
+      }
     }
 
     // Return the content to be stored client-side
@@ -57,7 +109,10 @@ export async function POST(req: NextRequest) {
       fileSize: file.size,
       content: content, // Full content for client-side storage
       preview: content.substring(0, 500), // First 500 chars for preview
-      message: 'File uploaded successfully. Knowledge base updated!'
+      contentLength: content.length,
+      message: fileName.endsWith('.pdf') && content.length > 100 
+        ? 'PDF uploaded and text successfully extracted! Knowledge base updated.' 
+        : 'File uploaded successfully. Knowledge base updated!'
     });
 
   } catch (error) {
