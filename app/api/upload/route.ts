@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import pdf from 'pdf-parse-fork';
 
 export async function POST(req: NextRequest) {
   try {
@@ -49,7 +48,8 @@ export async function POST(req: NextRequest) {
       content = `CSV Preview (first 10 rows):\n${lines.join('\n')}`;
     } else if (fileName.endsWith('.pdf')) {
       try {
-        // Extract text from PDF
+        // Dynamically import pdf-parse-fork only when needed
+        const pdf = (await import('pdf-parse-fork')).default;
         const pdfData = await pdf(buffer);
         content = pdfData.text;
         
