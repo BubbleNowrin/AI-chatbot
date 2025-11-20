@@ -9,7 +9,7 @@ import {
   Trash2,
   Download,
   Settings,
-  Sparkles,
+  Brain,
   Bot,
   User,
   Menu,
@@ -429,7 +429,7 @@ export default function PlaygroundPage() {
                   chatMode === 'knowledge' ? 'border-[#6F7D8C]' :
                   'border-orange-200'
                 }`}>
-                  <Sparkles className={`w-8 h-8 mb-2 ${
+                  <Brain className={`w-8 h-8 mb-2 ${
                     chatMode === 'basic' ? 'text-[#6C596E]' :
                     chatMode === 'memory' ? 'text-[#4B2E39]' :
                     chatMode === 'knowledge' ? 'text-[#4B2E39]' :
@@ -467,7 +467,7 @@ export default function PlaygroundPage() {
               >
                 <div className="text-center max-w-2xl">
                   <div className={`w-20 h-20 bg-gradient-to-r ${selectedMode?.color} rounded-full flex items-center justify-center mx-auto mb-6`}>
-                    <Sparkles className="w-10 h-10 text-white" />
+                    <Brain className="w-10 h-10 text-white" />
                   </div>
                   <h2 className="text-3xl font-bold mb-4 text-gray-800">
                     {selectedMode?.name} Playground

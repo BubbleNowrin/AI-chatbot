@@ -9,7 +9,7 @@ import {
   BookOpen, 
   Users, 
   ArrowRight,
-  Sparkles,
+  Brain,
   Database,
   Network,
   Zap
@@ -159,7 +159,7 @@ export default function PortfolioPage() {
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
             className="inline-block mb-4"
           >
-            <Sparkles className="w-16 h-16 text-yellow-500" />
+            <Brain className="w-16 h-16 text-yellow-500" />
           </motion.div>
           
           <motion.h1 
